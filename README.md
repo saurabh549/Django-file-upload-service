@@ -1,3 +1,19 @@
+Introduction:
+This documentation outlines the usage and functionality of a RESTful API
+service created using Django, including JWT token authentication. The API has
+two endpoints: upload-files/ and get-files/, which allow users to upload
+and download files respectively. The endpoints require JWT bearer token
+authentication, which can be obtained by calling the /token/ API.
+
+
+you can set the time to expire the file link in FileUploadConfig model from django admin.
+
+If you try to access the file with the link after the time you specified in the FileUploadConfig model , link will not work .
+
+and you can't call the apis without passing the correct username and password. so it is a two layer security.
+
+
+
 Steps to setup the Project on Local:
 
 1. Take the Clone of the repository.
