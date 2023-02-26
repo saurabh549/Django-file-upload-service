@@ -1,65 +1,40 @@
-##Introduction
-This documentation outlines the usage and functionality of a RESTful API service created using Django, including JWT token authentication. The API has two endpoints: upload-files/ and download-files/, which allow users to upload and download files respectively. The endpoints require JWT bearer token authentication, which can be obtained by calling the /token/ API.
+Steps to setup the Project on Local:
 
-##Getting Started
-To use the API service, you will need to have the following tools installed on your machine:
-Python 3.6 or later
-Django 3.0 or later
-Django REST framework
-djangorestframework_simplejwt
+1. Take the Clone of the repository.
 
-##Authentication
-The API uses JWT bearer token authentication to ensure secure access to the endpoints. To obtain a token, call the /token/ API with valid username and password credentials. The API will return a token in JSON format, which should be used to authenticate requests to the other endpoints.
+2. Open terminal
 
+3. Create virtual environment by using the following command:
+    python3 -m virtualenv venv -p python3
 
-##Token API
-POST /token/
-#Request Body
-{
-  "username": "your_username",
-  "password": "your_password"
-}
-#Response Body
+4. Activate venv by using the folllowing command:
+    source venv/bin/activate
 
-{
-  "access": "<your_access_token>",
-  "refresh": "<your_refresh_token>"
-}
+5. Go inside the project folder.
 
+6. Install the dependencies by following command:
+pip install requirment.txt
 
-##API Endpoints
-#Upload Files API
-POST /upload-files/
-Request Headers
-Authorization: Bearer <your_access_token>
-Request Body
-file: The file to be uploaded.
-uploaded_by: The name of the person who uploaded the file.
-title: The title of the image.
-Response Body
-{
-  "title": "<file_title>",
-  "uploaded_by": "<uploader_name>",
-  "file": "<file>"
-}
-Response Body
-{
-    "status_code": 200,
-    "status_message": "SUCCESS"
-}
-Download Files API
-GET /download-files/
-Request Headers
-Authorization: Bearer <your_access_token>
-Response Body
-{
-    "status_code": 200,
-    "files": {
-        "Test Sample": "http://127.0.0.1:8000/files/image_3_pcc9048.png",
-        "Doodle Image": "http://127.0.0.1:8000/files/doodleimg_new.jpg"
-    },
-    "status_message": "SUCCESS"
-}
+7. Run the following commands:
 
-Conclusion
-This API service provides secure endpoints for uploading and downloading files using JWT token authentication. To use the service, obtain a token by calling the /token/ API, and include the token in the Authorization header for subsequent requests to the other endpoints.
+    python manage.py makemigrations
+
+    python manage.py migrate
+
+    settings.py DEBUG True
+
+    python manage.py createsuperuser
+
+    python manage.py runserver
+
+8. Go to admin and create a object for FileUploadConfig , by default it will take the 5 minute as value.
+
+9. Import Given Postman Collection in POSTMAN.
+
+10. Set username and password in collection variables
+
+11. call token generation API
+
+12. call file upload API and upload a file
+
+13. call get files API and you can download files directly clicking on the links you get in the response.
