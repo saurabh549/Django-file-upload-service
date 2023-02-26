@@ -1,0 +1,8 @@
+files/*
+static/*
+log/*
+file_upload_app/migrations/000*.py
+file_upload_app/__pycache__/*
+db.sqlite3
+file_upload_service/__pycache__/*
+file_upload_app/migrations/__pycache__/*
